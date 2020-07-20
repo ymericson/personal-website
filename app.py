@@ -8,7 +8,7 @@ def home():
 
 @app.route("/about")
 def about():
-    return "<h1>This is an about page</h1>"\
+    return render_template('about.html', title='About')
 
 if __name__ == '__main__':
     app.run(debug=True)
