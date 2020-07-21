@@ -25,6 +25,7 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home</a>
                 <a class="nav-item nav-link" href="/about">About</a>
+                <a class="nav-item nav-link" href="../static/resume.pdf" target="_blank">CV</a>
             </div>
           </div>
         </div>
@@ -32,11 +33,8 @@
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
-          {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
         </div>
-        
-      </div>
     </main>
 
 

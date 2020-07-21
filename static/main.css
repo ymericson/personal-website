@@ -1,12 +1,12 @@
 body {
-  background-color: #3f4e66;
+  background-color: #627e6d;
   margin-top: 100px;
   margin-left: 10%;
   margin-right: 10%;
 }
 
 h1 {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   font-family: Calibri, sans-serif;
   color: #fff;
@@ -26,7 +26,7 @@ p {
   margin-bottom: 20px;
   font-family: Calibri, sans-serif;
   color: #fff;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 30px;
 }
 
@@ -34,7 +34,7 @@ a {
   -webkit-transition: border-color 200ms ease, color 200ms ease;
   transition: border-color 200ms ease, color 200ms ease;
   font-family: Calibri, sans-serif;
-  color: #fff;
+  color: #dddddd;
   text-decoration: none;
 }
 
@@ -45,11 +45,13 @@ a:hover {
 
 a:focus {
   border-bottom-color: #1d2330;
-  color: #1d2330;
+  color: #e0e0e0;
 }
 
 .content {
-  margin-top: 60px;
+  margin-top: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .social-icon {
@@ -57,4 +59,8 @@ a:focus {
   padding-right: 25px;
   float: left;
   border-bottom: 0px none #000;
+}
+
+img.headshot {
+  width: 50%
 }
