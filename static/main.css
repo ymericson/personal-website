@@ -1,5 +1,5 @@
 body {
-  background-color: #627e6d;
+  background-color: #51685a;
   margin-top: 100px;
   margin-left: 10%;
   margin-right: 10%;
@@ -54,9 +54,10 @@ a:focus {
   padding-left: 15px;
 }
 
-.social-icon {
+.social-icon svg {
   margin-top: 60px;
-  padding-right: 25px;
+  margin-right: 15px;
+  padding-right: 2px;
   float: left;
   border-bottom: 0px none #000;
 }
