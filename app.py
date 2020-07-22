@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+import os
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -6,9 +8,10 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route("/about")
+@app.route("/projects")
 def about():
-    return render_template('about.html', title='About')
+    return render_template('projects.html', title='Projects')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -18,7 +18,8 @@ h2 {
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: Calibri, sans-serif;
-  font-size: 22px;
+  color: #ececec;
+  font-size: 33px;
   font-weight: 700;
 }
 
@@ -54,8 +55,12 @@ a:focus {
   padding-left: 15px;
 }
 
+.social-icon {
+  padding-right: 15px;
+  text-align: right;
+}
 .social-icon svg {
-  margin-top: 60px;
+  margin-top: 10%;
   margin-right: 15px;
   padding-right: 2px;
   float: left;
