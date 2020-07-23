@@ -112,3 +112,7 @@ p.card-text {
   font-size: 20px;
   line-height: 25px;
 }
+
+svg {
+  margin-bottom: 50px;
+}
