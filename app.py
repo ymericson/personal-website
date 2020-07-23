@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import os
 
 app = Flask(__name__)
 
@@ -8,10 +7,13 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route("/projects")
-def about():
+@app.route("/projects/")
+def projects():
     return render_template('projects.html', title='Projects')
 
+@app.route("/projects/project1")
+def proj1():
+    return render_template('projects/proj.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
