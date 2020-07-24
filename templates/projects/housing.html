@@ -1,0 +1,664 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>
+  Predicting Chicago housing prices based on neighborhood characteristics
+</h1>
+<article>
+      <p><a href="https://github.com/ymericson/ml-project">View on GitHub</a></p>
+
+
+<h2>
+  Summary
+</h2>
+<p>
+  In the past decade, Chicago, like many cities across the United States, has
+  been grappling with housing price increases that make it increasingly
+  difficult for lower and middle-class residents to continue affording to
+  live in neighborhoods they have resided in. The rate of property value
+  increase stems from a variety of economic factors that affect neighborhoods
+  differently. We are interested in using those neighborhood characteristics
+  - features such as demographics, crime, and access to public transit - to
+  predict average housing price values in the future. We used regression
+  models to identify neighborhoods where lack of affordable housing is most
+  likely to be an issue. We recommend that policymakers focus affordable
+  housing resources on these areas to ease the burden on lower income
+  residents living in these areas.
+</p>
+<h5>
+  Background
+</h5>
+<p>
+  Several economic and environmental factors, such as migration, development,
+  and housing demand, have affected the availability of residential units
+  over the last decade, especially in Chicago. These trends can differ
+  between neighborhoods, with some areas growing quickly while others end up
+  stagnant or falling behind. Overall, Chicago has seen a steady increase in
+  median price of homes sold in the last decade.
+</p>
+<p>
+  Despite the increased number of single-family housing development in
+  Chicago, there is a growing concern that lower and middle-income families
+  are not able to find suitable housing at a price they can afford. As of
+  2018, there were about 182,000 more people who need affordable housing than
+  there were low-cost apartment units in Cook County. Especially for
+  low-income households with children, finding an affordable, right-sized,
+  and safe residential unit can be a challenge.
+</p>
+<p>
+  Institute for Housing Studies published a report showing that the supply of
+  affordable housing has decreased the fastest in areas like Logan Square and
+  other neighborhoods on the city’s North and Northwest sides. In response to
+  this report, the city council held a meeting to discuss the development of
+  affordable housing in this area. The city’s immediate response demonstrates
+  the importance of providing affordable housing to the local government.
+</p>
+<p>
+  Growing urban inequality and gap between the demand and supply are
+  accompanying trends to rising housing prices in the United States. This is
+  an important political issue; in fact, Mayor Lori Lightfoot ran on a
+  platform that emphasized the need to address gentrification and affordable
+  housing challenges.
+</p>
+<p>
+  Knowing the different development trends of neighborhoods in advance can
+  help city officials make policies and allocate resources effectively in
+  order to address the different potential needs and issues within each
+  neighborhood. Policy interventions to increase access to affordable housing
+  can take time. The construction of new affordable housing units (often as a
+  portion of another development project) can take 8-14 months to close.
+  Policy changes, including those related to housing subsidies or
+  requirements for developers can take years of debate among city council
+  members.
+</p>
+<p>
+  Our solution is to use a machine learning model to predict housing prices
+  based on these neighborhood characteristics, several years into the future.
+  With our model to predict housing prices several years into the future,
+  city leaders will be better able to proactively allocate resources and plan
+  for future housing shortages, rather than reacting to housing price
+  increases after it has already occurred.
+</p>
+
+<h5>
+  Machine Learning Model
+</h5>
+
+<p>
+  a) Problem Formulation and Features Selection
+</p>
+<p>
+  To address the policy issues raised in the Executive Summary, we want to be
+  able to predict the average house price per Census block group a few years
+  into the future. We ended up choosing this time lag to be 3 years for the
+  following reasons:
+</p>
+<ol>
+  <li>
+      <p>
+          Some of our features (i.e., Census data) are usually available with
+          at least 1 year lag to the current year (i.e., the latest Census
+          data in 2020 is Census 2018).
+      </p>
+  </li>
+  <li>
+      <p>
+          It takes time to implement any policy changes so ideally we would
+          want to predict house price changes at least 2 years into the
+          future.
+      </p>
+  </li>
+</ol>
+<p>
+  We have identified that our prediction problem is a regression machine
+  learning problem. We used linear regression techniques and conducted a grid
+  search using the following models: Linear Regression, Ridge, Lasso, Elastic
+  Net, Decision Tree Regressor, Random Forest Regressor, and Gradient
+  Boosting Regressor. We chose these models because they are suitable to
+  predict quantitative outcomes with high levels of accuracy (measured by
+  Root Mean Squared Error throughout our analyses).
+</p>
+
+<p>
+  During the process that we analyzed the correlations and distributions of
+  all our features data, no clear insights about additional feature
+  transformations came up. Therefore, we did not engineer any new features
+  other than the ones listed above.
+</p>
+<br/>
+<p>
+  b) Temporal Train, Validate, Test Sets
+</p>
+<p>
+  Because we want to use past features data (i.e., 3 years lagged) to predict
+  the future average house price per Census block group, we need to split our
+  train, validate, and test sets temporally, as follow:
+</p>
+<div align="center">
+  <table>
+      <colgroup>
+          <col width="86"/>
+          <col width="86"/>
+          <col width="86"/>
+          <col width="86"/>
+      </colgroup>
+      <tbody>
+          <tr>
+              <td>
+                  <p>
+                      2016
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2017
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2018
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2019
+                  </p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>
+                      Train
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Validate
+                  </p>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>
+                      Train
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Train
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Validate
+                  </p>
+              </td>
+              <td>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>
+                      Train
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Train
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Train
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Test
+                  </p>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<br/>
+<p>
+  The years noted above (i.e., 2016, 2017, 2018, 2019) indicate the years of
+  the target variable and not the years of the features data (e.g., “2016
+  Train” means the training set for 2016, which includes the average house
+  price per Census block group for 2016 and the features data (e.g., Census,
+  Crime, Sales &amp; Housing Attributes, etc.) from 2013).
+</p>
+<p>
+  Because the oldest data we have for all the features is from 2013 (e.g.,
+  Cook County Assessor’s Residential Sales Data is only available from 2013),
+  the earliest year we can train our model on predicting is 2016 as seen
+  above. Because of this limitation, we only have 2 validate sets and 1 test
+  set as seen above. As a result, we will also look at some non-temporal
+  5-fold cross validate results to corroborate that our final model is not
+  too overfitting. For non-temporal 5-fold cross validation, we will split
+  each train set (1 train set is before 2017, and 1 train set is before 2018)
+  into 5 folds randomly and report the average test error (measured as RMSE
+  of the validate fold) where appropriate.
+</p>
+<p>
+  c) Models and Hyper Parameters Grid Search
+</p>
+<p>
+  We first tried a simple Linear Regression (this model has no hyper
+  parameters to tune) and then tried different sets of hyper parameters for
+  each of the following models: Ridge, Lasso, Elastic Net, Decision Tree
+  Regressor, Random Forest Regressor, and Gradient Boosting Regressor. Please
+  see our Git repository “train-models-final” notebook for more information
+  on which hyper parameters were included in our grid search.
+</p>
+<p>
+  d) Evaluation and Results
+</p>
+<p>
+  We used Root Mean Squared Error as our evaluation metric for accuracy
+  because our machine learning problem is a regression problem and MSE is a
+  common evaluation metric for this type of problem. We used RMSE instead of
+  MSE because it is easier to interpret. As mentioned above, because we only
+  have 2 temporal validate sets (which we were concerned as too few validate
+  sets), we would try to look at both the temporal validate RMSEs and the
+  non-temporal 5-fold validate RMSEs where appropriate.
+</p>
+<p>
+  <img
+      src="https://lh5.googleusercontent.com/JKWpQ3wLVu6yuquvsytNyqWjKEklK8uiNb955THsKBYDiJMVR7S9wuPCM74gRaVhRjS9oSOsW4Luj22nfJnt7Fud5n6aftxFYp-s0Jvmc7tD5kg4UpCVuI9HsaWKmDpQ78PSafN4"
+      class="img-fluid rounded z-depth-1"
+      width="696"
+      height="333"
+  />
+</p>
+<p>
+  As you can see from the chart above, a simple Linear Regression model is
+  just really bad (the left chart), and the best model class (based on RMSE)
+  appears to be the Random Forest Regressor, which we ended up choosing to be
+  our final model class.
+</p>
+<p>
+  Based on our grid search results of the hyper parameters tuning process for
+  the Random Forest Regressor, the table below shows the top 3 sets of hyper
+  parameters based on their temporal validate RMSEs of 2017 and 2018 (we took
+  the average of 2017 rank and 2018 rank and showed the top 3 based on this
+  average rank):
+</p>
+<br/>
+<div class=table>
+  <table>
+      <colgroup>
+          <col width="148"/>
+          <col width="95"/>
+          <col width="101"/>
+          <col width="75"/>
+          <col width="77"/>
+          <col width="37"/>
+          <col width="31"/>
+          <col width="33"/>
+          <col width="70"/>
+          <col width="27"/>
+      </colgroup>
+      <tbody>
+          <tr>
+              <td>
+                  <p>
+                      Params
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Non-temporal 5-fold validate RMSE
+                  </p>
+                  <p>
+                      (data = Before 2017)
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Non-temporal 5-fold validate RMSE
+                  </p>
+                  <p>
+                      (data = Before 2018)
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Temporal validate RMSE
+                  </p>
+                  <p>
+                      (data = 2017)
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Temporal validate RMSE
+                  </p>
+                  <p>
+                      (data = 2018)
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2017 rank
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2018 rank
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Avg rank
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      Temporal test RMSE
+                  </p>
+                  <p>
+                      (data = 2019)
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2019 rank
+                  </p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>
+                      {'max_depth': 70, 'max_features': 'sqrt',
+                      'min_samples_split': 2, 'n_estimators': 500}
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      134,749
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      129,738
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      97,553
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      108,888
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      3
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2.5
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      90,355
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      6
+                  </p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>
+                      {'max_depth': 90, 'max_features': 'sqrt',
+                      'min_samples_split': 2, 'n_estimators': 500}
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      135,183
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      130,179
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      97,286
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      109,222
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      2
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      7
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      4.5
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      90,070
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      4
+                  </p>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p>
+                      {'max_depth': 40, 'max_features': 'sqrt',
+                      'min_samples_split': 2, 'n_estimators': 500}
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      134,658
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      130,077
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      97,758
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      109,073
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      5
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      6
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      5.5
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      89,959
+                  </p>
+              </td>
+              <td>
+                  <p>
+                      3
+                  </p>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<p>
+  It is worth noting that the non-temporal 5-fold validate RMSEs of these 3
+  sets of hyper parameters are within +6% of the “best” non-temporal 5-fold
+  validate RMSE we got in both 2 train sets (before 2017 set and before 2018
+  set), which gave us confidence to choose these as our final candidates. You
+  can also see from the above that our RMSEs of the temporal test set (2019
+  data) is smaller than that of the temporal validate sets for these 3 sets
+  of hyper parameters. Additionally, all of them ranked pretty high (top 10)
+  by temporal test set RMSEs, which further corroborates our choice of the
+  final model (Random Forest Regressor) and hyper parameters. Because we were
+  still a little bit concern about overfitting, we decided to go with the
+  “least complicated” set of hyper parameters:
+</p>
+<p>
+  {'max_depth': 40, 'max_features': 'sqrt', 'min_samples_split': 2,
+  'n_estimators': 500}
+</p>
+<p>
+  Lastly, we did look at model performances by hyper parameter groups and did
+  not see anything too abnormal (see Appendix I for more details).
+</p>
+<p>
+  e) Predictions into the Future
+</p>
+<p>
+  As a result, we decided to proceed with the above “least complicated” set
+  of hyper parameters. That means, we used this set of hyper parameters to
+  retrain the Random Forest Regressor using all data from both the train,
+  validate, and test sets (i.e., from 2016 to 2019) to derive a final Random
+  Forest Regressor, which we then used to predict the average house price per
+  Census block group for 2020 and 2021 (where we do not have labeled data
+  for). Because 2020 is already halfway through, our conclusions and policy
+  recommendations will focus on the predictions for 2021 instead of 2020.
+</p>
+<p>
+  See Figure 6 for the top 10 important features of this final Random Forest
+  Regressor.
+</p>
+<h5>
+  Conclusion
+</h5>
+<h5>
+  Policy Recommendations
+</h5>
+<p>
+  Our model can help us make policy recommendations to city officials about
+  where affordable housing might be a more pressing issue in the future. 
+  There are several different ways Chicago approaches the development of
+  affordable housing units. One approach is through the Affordable
+  Requirements Ordinance (ARO), which requires developers seeking a zoning
+  change or financial assistance from the city to allocate 10 percent of
+  their property as affordable housing units. Revisions of the ARO are
+  currently being discussed in City Hall, so our recommendations will come at
+  a relevant time to advise policymakers’ decisions.
+</p>
+<p>
+  Our recommendation is to increase the affordable housing requirement to 15
+  to 30 percent in neighborhoods we predict to have larger increases in
+  housing price relative to income, while maintaining the 10 percent
+  requirement in lower growth neighborhoods. This recommendation builds off a
+  pilot program in the Near North Side, Near West Side, and Milwaukee Avenue
+  corridors where this requirement has been increased to 15 or 20 percent
+  starting in 2017. Our model provides greater specificity on which
+  neighborhoods to focus on compared to the existing pilot program, and
+  emphasizes a slightly different set of neighborhoods (our list of
+  neighborhoods is more concentrated in South Chicago). The updated
+  requirement would aim to increase the availability of affordable housing in
+  neighborhoods experiencing high housing price growth.
+</p>
+<p>
+  Additionally, under the current version of the ARO, developers are allowed
+  to pay a one-time fee in lieu of building in affordable housing units. We
+  recommend that the city adjust the required percentage of affordable units
+  based on the affordability of the neighborhood. We recommend that the city
+  revisit the fee requirements by either increasing the fee in the
+  neighborhoods with most rapidly rising housing prices, or disallowing the
+  fees altogether.
+</p>
+<h5>
+  Ethical Concerns
+</h5>
+<p>
+  One ethical concern can be how this data is used. According to Rachel Weber
+  (University of Illinois-Chicago) predictions could potentially become
+  self-fulfilling prophecies. If such a model was published by a reputable
+  source, real estate investors may use these models to determine where to
+  purchase property or develop new apartment complexes, since these groups
+  would like to see housing prices increase as it would maximize their own
+  profit.
+</p>
+<h5>
+  Limitations, Caveats, and Future Suggestions
+</h5>
+<p>
+  It is difficult to have a perfect measure to capture how the affordability
+  of an area may change over time. We used housing sales prices to capture
+  these trends, but there are limitations to using this metric. One issue is
+  the relative lack of data points available for housing sales. Only a small
+  proportion of houses are sold in any given year. Since our target variable
+  is the average housing sales price aggregated at the census block level,
+  the lack of data could potentially skew our target variables.
+</p>
+<p>
+  Using housing sales specifically also doesn’t capture the trends in rental
+  rates, which represented about 43% of households in 2017. Renters can be a
+  significant portion of the households in a given locale, and the proportion
+  of renters is also an underlying characteristic that can introduce bias in
+  our target variable. For example, housing sales may be more prevalent in
+  areas where homeownership is high, thus providing a more robust dataset for
+  these areas. The areas with more homeowners might have different
+  characteristics than areas with more renters. By only using home sales as
+  our target variable, we could be using a slightly biased target variable.
+</p>
+<p>
+  In the future, we hope to expand upon our target variables by including
+  more data on renters and home assessments outside of sales. We could also
+  look into property development, particularly of new apartment complexes,
+  trends in a given area. Unfortunately, these metrics currently are
+  imperfect. Rental rates differ significantly based on their characteristics
+  (e.g. number of rooms in house, square footage) and it is difficult to
+  extract these characteristics from renters data. Housing price assessments
+  for homes that have not been sold often rely on algorithms to determine
+  price, which doesn’t give us a ‘real’ metric to use as a target.
+</p>
+<div>
+  <br/>
+</div>
+</article>
+{% endblock content %} 
