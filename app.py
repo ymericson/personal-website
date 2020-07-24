@@ -11,9 +11,9 @@ def home():
 def projects():
     return render_template('projects.html', title='Projects')
 
-@app.route("/projects/project1")
-def proj1():
-    return render_template('projects/proj.html')
-
+@app.route("/projects/<proj_name>") 
+def proj(proj_name): 
+    return render_template('projects/%s.html' % proj_name)
+    
 if __name__ == '__main__':
     app.run(debug=True)
