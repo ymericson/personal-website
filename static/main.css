@@ -3,8 +3,8 @@ html {
 }
 
 body {
-  background-color: #44574b;
-  margin-top: 100px;
+  background-color: #527960;
+  margin-top: 0px;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -48,7 +48,7 @@ a {
   -webkit-transition: border-color 200ms ease, color 200ms ease;
   transition: border-color 200ms ease, color 200ms ease;
   font-family: Calibri, sans-serif;
-  color: #bcc6ff;
+  color: #7fc0f1;
   text-decoration: none;
 }
 
@@ -58,7 +58,7 @@ a.nav-item {
 }
 
 .fixed-top {
-  background-color: #44574b;
+  background-color: #527960;
 }
 
 a:hover {
@@ -124,7 +124,7 @@ article {
 
 code {
   background-color: #f9f2f42d;
-  color: #e46565;
+  color: #fcbaba;
   font-size: 87.5%;
   word-break: break-word;
 }
