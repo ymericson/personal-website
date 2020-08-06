@@ -3,17 +3,21 @@ html {
 }
 
 body {
-  background-color: #527960;
-  margin-top: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 10px;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+.navbar {
+  font-weight: bold;
+  flex-wrap: nowrap;
+  margin-bottom: 50px;
 }
 
 h1 {
   margin-top: 30px;
   margin-bottom: 20px;
-  font-family: Calibri, sans-serif;
-  color: #fff;
   font-size: 40px;
   font-weight: 600;
 }
@@ -21,8 +25,6 @@ h1 {
 h2 {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Calibri, sans-serif;
-  color: #ececec;
   font-size: 33px;
   font-weight: 700;
 }
@@ -30,16 +32,12 @@ h2 {
 h5 {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Calibri, sans-serif;
-  color: #ececec;
   font-size: 23px;
   font-weight: 700;
 }
 
 p {
   margin-bottom: 20px;
-  font-family: Calibri, sans-serif;
-  color: #fff;
   font-size: 20px;
   line-height: 30px;
 }
@@ -47,23 +45,18 @@ p {
 a {
   -webkit-transition: border-color 200ms ease, color 200ms ease;
   transition: border-color 200ms ease, color 200ms ease;
-  font-family: Calibri, sans-serif;
-  color: #7fc0f1;
   text-decoration: none;
-}
-
-a.nav-item {
-  font-family: Calibri, sans-serif;
-  color: #ffffff;
-}
-
-.fixed-top {
-  background-color: #527960;
+  color: #000;
+  background: linear-gradient(
+    transparent 0, transparent 80%, 
+    #0083ff33 60%, 
+    #0083ff33 100%);
 }
 
 a:hover {
-  border-bottom-color: #98a4be;
-  color: #9eabc5;
+  text-decoration: none; 
+  color: #0084ffc9;
+
 }
 
 a:focus {
@@ -87,7 +80,6 @@ a:focus {
   padding-right: 2px;
   float: left;
   border-bottom: 0px none #000;
-  color: #fff;
 }
 
 img.headshot {
@@ -113,8 +105,6 @@ img.img-fluid {
 }
 
 li {
-  font-family: Calibri, sans-serif;
-  color: #fff;
   font-size: 16px;
 }
 
@@ -123,8 +113,8 @@ article {
 }
 
 code {
-  background-color: #f9f2f42d;
-  color: #fcbaba;
+  background-color: #f9f2f47c;
+  color: #fa8b8b;
   font-size: 87.5%;
   word-break: break-word;
 }
@@ -136,7 +126,6 @@ code {
 
 p.card-text {
   margin-bottom: 20px;
-  font-family: Calibri, sans-serif;
   color: #fff;
   font-size: 20px;
   line-height: 25px;

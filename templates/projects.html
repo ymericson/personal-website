@@ -1,26 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="col-md-8">
-        <h1>Here are some things I've worked on:</h1>    
+        <h1>Things I've worked on:</h1>    
     </div>
     <div class="col-md-4"></div>
 
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h2>Emissions Dashboard</h2>
-                <p>Django web app of U.S. state energy consumption trends</p>
-                <p><a class="btn btn-outline-light btn-sm" href="project1" role="button">View details »</a></p>
+                <div class="card">
+                    <img class="card-img-top" src="../static/images/price_to_income.png" alt="Emissions">
+                    <div class="card-body">
+                      <h5 class="card-title">Predicting Housing Affordability</h5>
+                      <p class="card-text">Using machine learning to predict price-to-income ratios in Chicago neighborhoods</p>
+                      <a href="housing" class="btn btn-outline-light btn-sm">View details »</a>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" src="../static/images/stock.webp" alt="Card image cap">
+                    <img class="card-img-top" src="../static/images/django_cropped.png" alt="Emissions">
                     <div class="card-body">
-                      <h5 class="card-title">Project Number Two</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-outline-light btn-sm">View details »</a>
+                      <h5 class="card-title">Emissions Dashboard</h5>
+                      <p class="card-text">Django web app of U.S. state energy consumption trends</p>
+                      <a href="emissions" class="btn btn-outline-light btn-sm">View details »</a>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <h2>Project 3</h2>
