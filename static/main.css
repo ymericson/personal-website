@@ -9,6 +9,11 @@ body {
   margin-right: 10%;
 }
 
+.row {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
 .navbar {
   font-weight: bold;
   flex-wrap: nowrap;
@@ -20,21 +25,16 @@ h1 {
   margin-bottom: 20px;
   font-size: 40px;
   font-weight: 600;
+  display: inline-block;
 }
 
-h2 {
+h4 {
   margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 33px;
-  font-weight: 700;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  display: inline-block;
 }
 
-h5 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 23px;
-  font-weight: 700;
-}
 
 p {
   margin-bottom: 20px;
@@ -104,8 +104,21 @@ img.img-fluid {
   margin-top: 20px;
 }
 
+ul {
+  list-style: outside none;
+  
+}
+
 li {
-  font-size: 16px;
+  text-indent: -1.6em;
+  font-size: 15.5px;
+  margin-bottom: 0.6em;
+
+}
+
+li:before {
+  content: "-"; 
+  padding-right: 18px;
 }
 
 article {
