@@ -48,14 +48,14 @@ a {
   text-decoration: none;
   color: #000;
   background: linear-gradient(
-    transparent 0, transparent 80%, 
-    #0083ff33 60%, 
-    #0083ff33 100%);
+    transparent 0, transparent 70%, 
+    #03478633 60%, 
+    #03478633 100%);
 }
 
 a:hover {
   text-decoration: none; 
-  color: #0084ffc9;
+  color: #84898fc9;
 
 }
 
