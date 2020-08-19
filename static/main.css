@@ -10,8 +10,7 @@ body {
 }
 
 .row {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 30px;
 }
 
 .navbar {
@@ -29,7 +28,7 @@ h1 {
 }
 
 h4 {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 40px;
   display: inline-block;
@@ -55,7 +54,6 @@ a {
 a:hover {
   text-decoration: none; 
   color: #84898fc9;
-
 }
 
 a:focus {
@@ -72,11 +70,12 @@ a.projlink {
 }
 
 a.github {
-  background-color: #7dbae6c2;
+  background-color: #54aae7ea;
+  
 }
 
 a.website {
-  background-color: #7de6becc;
+  background-color: #40e9a8ef;
 }
 
 
