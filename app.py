@@ -4,7 +4,7 @@ import base64
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/home")
+@app.route("/home/")
 def home():
     return render_template('home.html')
 
@@ -12,7 +12,7 @@ def home():
 def projects():
     return render_template('projects.html', title='Projects')
 
-@app.route("/resume", methods=["GET"])
+@app.route("/resume/", methods=["GET"])
 def get_test_file():
     return render_template('resume.html', title='Resume')
 
