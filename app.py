@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import base64
+import base64, os
 
 app = Flask(__name__)
 
@@ -17,4 +17,5 @@ def get_test_file():
     return render_template('resume.html', title='Resume')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+   port = int(os.environ.get("PORT", 5000))
+   app.run(debug=True, port=port)
