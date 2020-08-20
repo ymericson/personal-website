@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import base64
 
 app = Flask(__name__)
 
@@ -11,9 +12,9 @@ def home():
 def projects():
     return render_template('projects.html', title='Projects')
 
-@app.route("/projects/<proj_name>") 
-def proj(proj_name): 
-    return render_template('projects/%s.html' % proj_name)
-    
+@app.route("/resume", methods=["GET"])
+def get_test_file():
+    return render_template('resume.html', title='Resume')
+
 if __name__ == '__main__':
     app.run(debug=True)
